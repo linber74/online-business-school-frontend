@@ -3,9 +3,11 @@ import './Header.css'
 function Header() {
 
     return (
-        <header className="header">
-            <h1>Education Portal</h1>
-        </header>
-    )
+      <header className="header">
+        <div className="header-content">
+          <h1>Education Portal</h1>
+        </div>
+      </header>
+    );
 }
 export default Header
