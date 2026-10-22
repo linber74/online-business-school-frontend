@@ -6,8 +6,17 @@
   text-align: center;
 }
 
+.card-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
 @media (min-width: 768px) {
   .home {
     padding: 2rem 3rem;
+  }
+  .card-list{
+    grid-template-columns: repeat(3, 1fr);
   }
 }

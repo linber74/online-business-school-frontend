@@ -1,4 +1,11 @@
 import "./Home.css";
+import Card from "../components/Card";
+
+const CARDS = [
+  { title: "Courses", text: "Browse our courses and programs." },
+  { title: "Lectures", text: "Join live lectures or watch recordings." },
+  { title: "Student info", text: "Find information for students." },
+];
 
 function Home() {
   return (
@@ -8,6 +15,11 @@ function Home() {
         This is a placeholder text for the Online Business School homepage. The
         final text will be provided by Via Mare Consulting.
       </p>
+      <div className="card-list">
+        {CARDS.map((card) => (
+          <Card key={card.title} title={card.title} text={card.text} />
+        ))}
+      </div>
     </main>
   );
 }
