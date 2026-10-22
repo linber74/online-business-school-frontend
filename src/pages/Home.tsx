@@ -1,9 +1,15 @@
 import "./Home.css";
 import Card from "../components/Card";
 
+// TODO: Lectures requires login later (see sitemap v2)
 const CARDS = [
   { title: "Courses", text: "Browse our courses and programs." },
-  { title: "Lectures", text: "Join live lectures or watch recordings." },
+  {
+    title: "Lectures",
+    text:
+      "Join live lectures or watch recordings. " +
+      "Public for now. Will require login later.",
+  },
   { title: "Student info", text: "Find information for students." },
 ];
 
