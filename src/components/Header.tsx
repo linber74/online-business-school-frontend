@@ -1,10 +1,12 @@
-import "./Header.css";
+import './Header.css';
+import { Link } from 'react-router-dom'
 
 const LINKS = [
-  { label: "Home", href: "#" },
-  { label: "Courses", href: "#" },
-  { label: "Lectures", href: "#" },
-  { label: "Student info", href: "#" },
+  { label: "Home", href: "/" },
+  { label: "Courses", href: "/courses" },
+  { label: "Login", href: "/login"},
+  //{ label: "Lectures", href: "#" },
+  { label: "Student info", href: "/student-info" },
 ];
 
 function Header() {
@@ -16,7 +18,7 @@ function Header() {
           <ul className="nav-list">
             {LINKS.map(link => (
               <li key={link.label}>
-                <a href={link.href}>{link.label}</a>
+                <Link to={link.href}>{link.label}</Link>
               </li>
             ))}
           </ul>
