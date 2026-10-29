@@ -6,7 +6,7 @@ export const mockCourses: Course[] = [
     title: "Marketing basics",
     description:
       "Learn the fundamentals of marketing and how to reach customers.",
-    imageUrl: "",
+    imageUrl: "/images/Marketing.jpg",
     duration: "6 weeks",
     price: 290,
   },
@@ -14,7 +14,7 @@ export const mockCourses: Course[] = [
     id: 2,
     title: "Leadership",
     description: "Develop your leadership skills and learn to guide teams.",
-    imageUrl: "",
+    imageUrl: "/images/Leadership.jpg",
     duration: "8 weeks",
     price: 390,
   },
@@ -23,7 +23,7 @@ export const mockCourses: Course[] = [
     title: "Financial analysis",
     description:
       "Understand financial statements and make better business decisions.",
-    imageUrl: "",
+    imageUrl: "/images/Finance.jpg",
     duration: "4 weeks",
     price: 240,
   },
