@@ -1,0 +1,21 @@
+.dashboard {
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dashboard .card-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .dashboard {
+    padding: 2rem 3rem;
+  }
+  .dashboard .card-list{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
