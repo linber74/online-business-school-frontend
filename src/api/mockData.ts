@@ -8,7 +8,7 @@ export const mockCourses: Course[] = [
       "Learn the fundamentals of marketing and how to reach customers.",
     imageUrl: "",
     duration: "6 weeks",
-    price: 2900,
+    price: 290,
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ export const mockCourses: Course[] = [
     description: "Develop your leadership skills and learn to guide teams.",
     imageUrl: "",
     duration: "8 weeks",
-    price: 3900,
+    price: 390,
   },
   {
     id: 3,
@@ -25,6 +25,6 @@ export const mockCourses: Course[] = [
       "Understand financial statements and make better business decisions.",
     imageUrl: "",
     duration: "4 weeks",
-    price: 2400,
+    price: 240,
   },
 ];

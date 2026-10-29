@@ -1,0 +1,17 @@
+.courses {
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.courses-list {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .courses-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
