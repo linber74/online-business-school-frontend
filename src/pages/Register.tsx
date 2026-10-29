@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./Register.css";
+import { register } from "../api/api";
 
 function Register() {
   const [name, setName] = useState("");
@@ -12,7 +13,9 @@ function Register() {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [error, setError] = useState("");
 
-  function handleSubmit(e: React.SyntheticEvent) {
+  const navigate = useNavigate();
+
+  async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     if (name === "" || email === "" || dateOfBirth === "" ||
       password === "" || repeatPassword === "") {
@@ -32,8 +35,12 @@ function Register() {
 
     setError("");
 
-    //sen to backend comes later
-    console.log("Register", email);
+    try {
+      await register({ name, email, dateOfBirth, phoneNr, country, password });
+      navigate("/login");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    }
   }
 
   return (
