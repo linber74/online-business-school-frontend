@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import StudentInfo from './pages/StudentInfo'
+import ProtecteRoute from './components/ProdecteRoute'
 
 function App() {
 
@@ -19,8 +20,22 @@ function App() {
         <Route path="/courses/:id" element={<CourseDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/student-info" element={<StudentInfo />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtecteRoute>
+              <Dashboard />
+            </ProtecteRoute>
+          }
+        />
+        <Route
+          path="/student-info"
+          element={
+            <ProtecteRoute>
+              <StudentInfo />
+            </ProtecteRoute>
+          }
+        />
       </Routes>
     </>
   );
