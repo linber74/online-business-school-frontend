@@ -2,31 +2,32 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./Login.css";
 import { login } from "../api/api";
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const { login: setAuthUser } = useAuth();
 
   const navigate = useNavigate();
-    
-    async function handleSubmit(e: React.SyntheticEvent) {
-        e.preventDefault();
-        if (email === "" || password === "") {
-            setError("Please fill in email and password");
-            return;
-        }
-      setError("");
-      
-      try {
-        const user = await login(email, password);
-        // later: save the user (token) so the app remembers the login.
-        console.log("Logged in", user);
-        navigate("/dashboard");
-      } catch (err) {
-        setError(err instanceof Error ? err.message: "Something went wrong");
-      }
+
+  async function handleSubmit(e: React.SyntheticEvent) {
+    e.preventDefault();
+    if (email === "" || password === "") {
+      setError("Please fill in email and password");
+      return;
     }
+    setError("");
+
+    try {
+      const user = await login(email, password);
+      setAuthUser(user);
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong");
+    }
+  }
 
   return (
     <main className="login">
@@ -43,14 +44,14 @@ function Login() {
         </div>
         <div className="login-field">
           <label htmlFor="password">Password</label>
-                  <input
-                      id="password"
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                  />
-              </div>
-              {error && <p className="login-error">{error}</p>}
+          <input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        {error && <p className="login-error">{error}</p>}
         <button type="submit">Log in</button>
       </form>
       <p>
