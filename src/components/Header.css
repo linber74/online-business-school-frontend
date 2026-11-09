@@ -28,3 +28,16 @@
 .nav-list a:hover {
   text-decoration: underline;
 }
+
+.nav-list button {
+  border: none;
+  background: none;
+  font: inherit;
+  font-weight: bold;
+  color: inherit;
+  cursor: pointer;
+}
+
+.nav-list button:hover {
+  text-decoration: underline;
+}
