@@ -25,7 +25,7 @@ export async function login(email: string, password: string): Promise<User> {
         throw new Error("Wrong email or password");
     }
 
-    return {id: found.id, name: found.name, email: found.email, role: found.role}
+    return {id: found.id, name: found.name, email: found.email, roles: found.roles}
 }
 
 export async function register(data: RegisterData): Promise<User> {
@@ -43,11 +43,11 @@ export async function register(data: RegisterData): Promise<User> {
         id: mockUsers.length + 1,
         name: data.name,
         email: data.email,
-        role: "student",
+        roles: ["student"],
         password: data.password,
     }
 
     mockUsers.push(newUser);
-    return { id: newUser.id, name: newUser.name, email: newUser.email, role: newUser.role }
+    return { id: newUser.id, name: newUser.name, email: newUser.email, roles: newUser.roles }
 
 }

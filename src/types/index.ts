@@ -11,7 +11,7 @@ export type User = {
     id: number;
     name: string;
     email: string;
-    role: "student" | "teacher" |"admin"
+    roles: ("student" | "teacher" | "admin")[];
 }
 
 export type RegisterData = {
