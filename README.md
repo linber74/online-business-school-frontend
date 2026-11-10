@@ -45,3 +45,9 @@ src/
 ## Workflow
 - One branch per task, named feature/..., fix/... or docs/...
 - Open a pull request to main when the task is done
+- Ask a teammate to review your pull request (use Reviewers in GitHub)
+- Pull requests need at least one approval before merging
+- Temporary: until more team members have started their LIA, the repository
+  owner (Linda) may merge using the bypass if nobody has reviewed after 2
+  hours (next day if the pull request was opened at night)
+- Leave a comment in the pull request when merging without review
