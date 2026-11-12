@@ -23,3 +23,18 @@ export type RegisterData = {
   password: string;
 };
 
+export type EnrollmentStatus =
+    "Pending" | "Confirmed" | "Rejected" | "Completed";
+
+export type Enrollment = {
+  id: number;
+  userId: number;
+  courseId: number;
+  status: EnrollmentStatus;
+};
+
+export type MyCourse = {
+    enrollmentId: number;
+    status: EnrollmentStatus;
+    course: Course;
+};

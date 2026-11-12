@@ -1,0 +1,37 @@
+.my-courses {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.my-courses-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.my-courses-card {
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .my-courses-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.my-courses-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #2563eb;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.my-courses-card a:hover {
+  background: #1d4ed8;
+}
