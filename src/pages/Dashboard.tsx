@@ -14,8 +14,9 @@ function Dashboard() {
         <Link to="/my-courses">
           <Card title="My Courses" text="See your enrolled courses" />
         </Link>
-
-        <Card title="Profile" text="Your profile (coming later)" />
+        <Link to="/student-info">
+          <Card title="Profile" text="See your information" />
+        </Link>
       </div>
     </main>
   );
