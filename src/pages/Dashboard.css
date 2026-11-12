@@ -11,6 +11,12 @@
   margin-top: 1.5rem;
 }
 
+.dashboard .card-list a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 @media (min-width: 768px) {
   .dashboard {
     padding: 2rem 3rem;

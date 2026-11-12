@@ -1,16 +1,16 @@
-import Header from './components/Header'
-import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import Courses from './pages/Courses'
-import CourseDetails from './pages/CourseDetails'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Dashboard from './pages/Dashboard'
-import StudentInfo from './pages/StudentInfo'
-import ProtecteRoute from './components/ProdecteRoute'
+import Header from "./components/Header";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Courses from "./pages/Courses";
+import CourseDetails from "./pages/CourseDetails";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import StudentInfo from "./pages/StudentInfo";
+import ProtectedRoute from "./components/ProtectedRoute";
+import MyCourses from "./pages/MyCourses";
 
 function App() {
-
   return (
     <>
       <Header />
@@ -23,17 +23,25 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtecteRoute>
+            <ProtectedRoute>
               <Dashboard />
-            </ProtecteRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/student-info"
           element={
-            <ProtecteRoute>
+            <ProtectedRoute>
               <StudentInfo />
-            </ProtecteRoute>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/my-courses"
+          element={
+            <ProtectedRoute>
+              <MyCourses />
+            </ProtectedRoute>
           }
         />
       </Routes>
@@ -41,4 +49,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
