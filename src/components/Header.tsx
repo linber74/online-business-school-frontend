@@ -33,6 +33,11 @@ function Header() {
                 <li>
                   <Link to="/dashboard">Dashboard</Link>
                 </li>
+                {user.roles.includes("admin") && (
+                  <li>
+                    <Link to="/admin">Admin</Link>
+                  </li>
+                )}
                 <li>
                   <button onClick={handleLogout}>Log out</button>
                 </li>
