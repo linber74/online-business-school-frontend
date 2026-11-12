@@ -1,4 +1,4 @@
-import type { Course, User } from "../types";
+import type { Course, User, Enrollment } from "../types";
 
 export const mockCourses: Course[] = [
   {
@@ -53,4 +53,9 @@ export const mockUsers: MockUser[] = [
     roles: ["teacher"],
     password: "teacher12345",
   },
+];
+
+export const mockEnrollments: Enrollment[] = [
+  { id: 1, userId: 1, courseId: 1, status: "Confirmed" },
+  { id: 2, userId: 1, courseId: 2, status: "Pending" },
 ];

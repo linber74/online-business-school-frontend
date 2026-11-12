@@ -1,5 +1,5 @@
-import { mockCourses, mockUsers, type MockUser } from "./mockData";
-import type { Course, RegisterData, User } from "../types";
+import { mockCourses, mockEnrollments, mockUsers, type MockUser } from "./mockData";
+import type { Course, MyCourse, RegisterData, User } from "../types";
 
 function delay(ms : number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -50,4 +50,22 @@ export async function register(data: RegisterData): Promise<User> {
     mockUsers.push(newUser);
     return { id: newUser.id, name: newUser.name, email: newUser.email, roles: newUser.roles }
 
+}
+
+export async function getMyCourses(userId: number): Promise<MyCourse[]>{
+    await delay(300);
+
+    const enrollments = mockEnrollments.filter(e => e.userId === userId);
+
+    const result = enrollments
+        .map((enrollment) => {
+            const course = mockCourses.find(c => c.id === enrollment.courseId);
+            if (!course) {
+                return null;
+            }
+            return { enrollmentId: enrollment.id, status: enrollment.status, course };
+        })
+        .filter((item) => item !== null);
+    
+    return result;
 }
