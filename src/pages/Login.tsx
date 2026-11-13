@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./Login.css";
 import { login } from "../api/api";
 import { useAuth } from "../context/AuthContext";
+import { getHomePath } from "../utils/getHomePath";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ function Login() {
     try {
       const user = await login(email, password);
       setAuthUser(user);
-      navigate("/dashboard");
+      navigate(getHomePath(user));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     }

@@ -13,6 +13,9 @@ function Header() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
+  const isStaff =
+    user?.roles.includes("admin") || user?.roles.includes("teacher");
+
   function handleLogout() {
     logout();
     navigate("/");
@@ -30,9 +33,21 @@ function Header() {
             ))}
             {user ? (
               <>
-                <li>
-                  <Link to="/dashboard">Dashboard</Link>
-                </li>
+                {!isStaff && (
+                  <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </li>
+                )}
+                {user.roles.includes("admin") && (
+                  <li>
+                    <Link to="/admin">Admin</Link>
+                  </li>
+                )}
+                {user.roles.includes("teacher") && (
+                  <li>
+                    <Link to="/teacher">Teacher</Link>
+                  </li>
+                )}
                 <li>
                   <button onClick={handleLogout}>Log out</button>
                 </li>

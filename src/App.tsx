@@ -9,6 +9,8 @@ import Dashboard from "./pages/Dashboard";
 import StudentInfo from "./pages/StudentInfo";
 import ProtectedRoute from "./components/ProtectedRoute";
 import MyCourses from "./pages/MyCourses";
+import AdminDashboard from "./pages/AdminDashboard";
+import TeacherDashboard from "./pages/TeacherDashboard";
 
 function App() {
   return (
@@ -25,6 +27,22 @@ function App() {
           element={
             <ProtectedRoute>
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute role="admin">
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/teacher"
+          element={
+            <ProtectedRoute role="teacher">
+              <TeacherDashboard />
             </ProtectedRoute>
           }
         />
