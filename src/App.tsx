@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import MyCourses from "./pages/MyCourses";
 import AdminDashboard from "./pages/AdminDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
