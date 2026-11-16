@@ -7,11 +7,15 @@ export type Course = {
     price: number;
 }
 
+export type Role = 
+    "student" | "teacher" | "admin";
+
+
 export type User = {
     id: number;
     name: string;
     email: string;
-    roles: ("student" | "teacher" | "admin")[];
+    roles: Role[];
 }
 
 export type RegisterData = {
