@@ -2,59 +2,75 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./Register.css";
 import { register } from "../api/api";
+import { validateRegister } from "../utils/validateRegister";
 
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [phoneNr, setPhoneNr] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [country, setCountry] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [error, setError] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  function clearError(field: string) {
+    setErrors((prev) => ({ ...prev, [field]: "" }));
+  }
 
   const navigate = useNavigate();
 
   async function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
-    if (name === "" || email === "" || dateOfBirth === "" ||
-      password === "" || repeatPassword === "") {
-      setError("Please fill in all required fields");
+    const newErrors = validateRegister(
+      { name, email, dateOfBirth, phoneNumber, country, password },
+      repeatPassword,
+    );
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
-    if (password.length < 8) {
-       setError("Password must be at least 8 characters");
-       return;
-    }
-
-    if (password !== repeatPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
+    setErrors({});
     setError("");
 
     try {
-      await register({ name, email, dateOfBirth, phoneNr, country, password });
+      await register({
+        name,
+        email,
+        dateOfBirth,
+        phoneNumber,
+        country,
+        password,
+      });
       navigate("/login");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      if (err instanceof Error && err.message === "Email already registered") {
+        setErrors({ email: err.message });
+      } else {
+        setError(err instanceof Error ? err.message : "Something went wrong");
+      }
     }
   }
 
   return (
     <main className="register">
       <h2>Register</h2>
-      <form className="register-form" onSubmit={handleSubmit}>
+      <form className="register-form" onSubmit={handleSubmit} noValidate>
         <div className="register-field">
           <label htmlFor="name">Name</label>
           <input
             id="name"
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              setName(e.target.value);
+              clearError("name");
+            }}
           />
+          {errors.name && <p className="field-error">{errors.name}</p>}
         </div>
         <div className="register-field">
           <label htmlFor="email">Email</label>
@@ -62,8 +78,12 @@ function Register() {
             id="email"
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              clearError("email");
+            }}
           />
+          {errors.email && <p className="field-error">{errors.email}</p>}
         </div>
         <div className="register-field">
           <label htmlFor="dateOfBirth">Date of Birth</label>
@@ -71,26 +91,42 @@ function Register() {
             id="dateOfBirth"
             type="date"
             value={dateOfBirth}
-            onChange={(e) => setDateOfBirth(e.target.value)}
+            onChange={(e) => {
+              setDateOfBirth(e.target.value);
+              clearError("dateOfBirth");
+            }}
           />
+          {errors.dateOfBirth && (
+            <p className="field-error">{errors.dateOfBirth}</p>
+          )}
         </div>
         <div className="register-field">
-          <label htmlFor="phoneNr">Phone number (optional)</label>
+          <label htmlFor="phoneNumber">Phone number</label>
           <input
-            id="phoneNr"
+            id="phoneNumber"
             type="tel"
-            value={phoneNr}
-            onChange={(e) => setPhoneNr(e.target.value)}
+            value={phoneNumber}
+            onChange={(e) => {
+              setPhoneNumber(e.target.value);
+              clearError("phoneNumber");
+            }}
           />
+          {errors.phoneNumber && (
+            <p className="field-error">{errors.phoneNumber}</p>
+          )}
         </div>
         <div className="register-field">
-          <label htmlFor="country">Country (optional)</label>
+          <label htmlFor="country">Country</label>
           <input
             id="country"
             type="text"
             value={country}
-            onChange={(e) => setCountry(e.target.value)}
+            onChange={(e) => {
+              setCountry(e.target.value);
+              clearError("country");
+            }}
           />
+          {errors.country && <p className="field-error">{errors.country}</p>}
         </div>
         <div className="register-field">
           <label htmlFor="password">Password</label>
@@ -98,8 +134,12 @@ function Register() {
             id="password"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              clearError("password");
+            }}
           />
+          {errors.password && <p className="field-error">{errors.password}</p>}
         </div>
         <div className="register-field">
           <label htmlFor="repeatPassword">Repeat password</label>
@@ -107,8 +147,14 @@ function Register() {
             id="repeatPassword"
             type="password"
             value={repeatPassword}
-            onChange={(e) => setRepeatPassword(e.target.value)}
+            onChange={(e) => {
+              setRepeatPassword(e.target.value);
+              clearError("repeatPassword");
+            }}
           />
+          {errors.repeatPassword && (
+            <p className="field-error">{errors.repeatPassword}</p>
+          )}
         </div>
         {error && <p className="register-error">{error}</p>}
         <button type="submit">Register</button>
