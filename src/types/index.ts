@@ -5,6 +5,7 @@ export type Course = {
     imageUrl: string;
     duration: string;
     price: number;
+    code: string
 }
 
 export type Role = 
@@ -42,3 +43,5 @@ export type MyCourse = {
     status: EnrollmentStatus;
     course: Course;
 };
+
+
