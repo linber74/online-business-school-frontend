@@ -44,6 +44,7 @@ function CourseDetails() {
         />
       )}
       <h2>{course.title}</h2>
+      <p>Course code: {course.code}</p>
       <p>{course.description}</p>
       <p>Duration: {course.duration}</p>
       <p>Price: {course.price} Euro</p>

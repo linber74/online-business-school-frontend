@@ -55,6 +55,7 @@ function MyCourses() {
         {myCourses.map((item) => (
           <div className="my-courses-card" key={item.enrollmentId}>
             <h3>{item.course.title}</h3>
+            <p>Course code: { item.course.code}</p>
             <p>Status: {item.status}</p>
             <p>Duration: {item.course.duration}</p>
             <Link to={`/courses/${item.course.id}`}>View course</Link>

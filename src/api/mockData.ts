@@ -9,6 +9,7 @@ export const mockCourses: Course[] = [
     imageUrl: "/images/Marketing.jpg",
     duration: "6 weeks",
     price: 290,
+    code: "MKT101",
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ export const mockCourses: Course[] = [
     imageUrl: "/images/Leadership.jpg",
     duration: "8 weeks",
     price: 390,
+    code: "LDR101",
   },
   {
     id: 3,
@@ -26,6 +28,7 @@ export const mockCourses: Course[] = [
     imageUrl: "/images/Finance.jpg",
     duration: "4 weeks",
     price: 240,
+    code: "FIN101",
   },
 ];
 

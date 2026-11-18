@@ -13,6 +13,7 @@ function CourseCard({ course }: { course: Course }) {
         />
       )}
       <h3>{course.title}</h3>
+      <p>{course.code}</p>
       <p>{course.description}</p>
       <p>Duration: {course.duration}</p>
       <p>Price: {course.price} Euro</p>
