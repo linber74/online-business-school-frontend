@@ -44,4 +44,9 @@ export type MyCourse = {
     course: Course;
 };
 
-
+export type AdminEnrollment = {
+    enrollmentId: number;
+    studentName: string;
+    courseTitle: string;
+    status: EnrollmentStatus;
+};
