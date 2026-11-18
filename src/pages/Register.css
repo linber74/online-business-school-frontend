@@ -41,3 +41,9 @@
 .register-error{
     color: #b91c1c;
 }
+
+.field-error{
+    color: #b91c1c;
+    font-size:  0.875rem;
+    margin: 0.25rem 0 0; 
+}

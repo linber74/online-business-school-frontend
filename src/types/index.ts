@@ -23,8 +23,8 @@ export type RegisterData = {
   name: string;
   email: string;
   dateOfBirth: string;
-  phoneNr?: string; // ← ? = valfritt
-  country?: string; // ← ? = valfritt
+  phoneNumber: string; 
+  country: string;
   password: string;
 };
 
