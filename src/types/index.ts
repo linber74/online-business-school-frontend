@@ -5,6 +5,7 @@ export type Course = {
     imageUrl: string;
     duration: string;
     price: number;
+    code: string
 }
 
 export type Role = 
@@ -48,4 +49,4 @@ export type AdminEnrollment = {
     studentName: string;
     courseTitle: string;
     status: EnrollmentStatus;
-}
+};
