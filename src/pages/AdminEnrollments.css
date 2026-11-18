@@ -1,0 +1,74 @@
+.admin-enrollments {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.admin-enrollments-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.admin-enrollments-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.admin-enrollments-confirm {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.admin-enrollments-confirm:hover {
+  background: #15803d;
+}
+
+.admin-enrollments-reject {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.admin-enrollments-reject:hover {
+  background: #b91c1c;
+}
+
+.admin-enrollments-status{
+    display:inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.status-pending {
+    background: #fef3c7 ;
+    color: #92400e;
+}
+
+.status-confirmed{
+      background: #dcfce7;
+      color: #166534;
+}
+
+.status-rejected{
+      background: #fee2e2;
+      color: #991b1b;
+}
+
+.status-completed{
+      background: #dbeafe;
+      color: #1e40af;
+}

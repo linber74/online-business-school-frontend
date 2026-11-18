@@ -12,6 +12,7 @@ import MyCourses from "./pages/MyCourses";
 import AdminDashboard from "./pages/AdminDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import NotFound from "./pages/NotFound";
+import AdminEnrollments from "./pages/AdminEnrollments";
 
 function App() {
   return (
@@ -36,6 +37,14 @@ function App() {
           element={
             <ProtectedRoute role="admin">
               <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/enrollments"
+          element={
+            <ProtectedRoute role="admin">
+              <AdminEnrollments />
             </ProtectedRoute>
           }
         />
