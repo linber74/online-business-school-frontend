@@ -26,6 +26,37 @@ until the backend is connected.
 |---------|-------------------|-------------|
 | Student | student@test.com  | password123 |
 | Admin   | admin@test.com    | admin12345  |
+| Teacher | teacher@test.com  | teacher12345 |
+
+
+## Roles and start pages
+| Role    | Start page | Can access                          |
+|---------|------------|-------------------------------------|
+| Student | /dashboard | Courses, My courses, Student info   |
+| Teacher | /teacher   | Teacher area                        |
+| Admin   | /admin     | Admin area, enrollments, new course |
+
+Route protection in the frontend is only for user experience. The backend
+must check roles and course access too.
+
+## Pages
+- Public: Home, Courses, Course details, Login, Register
+- Student: Dashboard, My courses, Student info
+- Admin: /admin, /admin/enrollments, /admin/courses/new
+- Teacher: /teacher (empty for now)
+- Error pages: 403 (no access), 404 (not found)
+
+## Features
+- Registration with field validation
+- Login with role-based start pages
+- Courses with unique course code
+- Admin confirms or rejects enrollments
+- Admin creates courses (form with validation)
+
+## Mock API
+All data comes from src/api/api.ts and mockData.ts. Changes (new courses,
+enrollment status) are lost when the page is reloaded. It will be replaced
+by real backend calls later.
 
 ## Project structure
 ```
@@ -35,12 +66,9 @@ src/
   context/      AuthContext (logged-in user)
   pages/        Pages (Home, Courses, Login, Register, Dashboard ...)
   types/        Shared TypeScript types
+  utils/        Helper functions (validateRegister, validateCourse, getHomePath)
+  constants.ts  Shared constants (DURATION_UNIT)
 ```
-
-## Pages
-- Done: Home, Courses, Course details, Login, Register, Dashboard
-- Protected (login required): Dashboard, Student info
-- Planned: My courses, Profile, Results and certificates, Apply, admin pages
 
 ## Workflow
 - One branch per task, named feature/..., fix/... or docs/...
