@@ -9,6 +9,9 @@ function AdminDashboard() {
         <Link className="admin-dashboard-link" to="/admin/enrollments">
           Manage enrollments
         </Link>
+        <Link className="admin-dashboard-link" to="/admin/courses/new">
+          Create Course
+        </Link>
       </div>
     </main>
   );

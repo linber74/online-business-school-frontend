@@ -13,6 +13,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import NotFound from "./pages/NotFound";
 import AdminEnrollments from "./pages/AdminEnrollments";
+import AdminNewCourse from "./pages/AdminNewCourse";
 
 function App() {
   return (
@@ -69,6 +70,14 @@ function App() {
           element={
             <ProtectedRoute>
               <MyCourses />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/courses/new"
+          element={
+            <ProtectedRoute role="admin">
+              <AdminNewCourse />
             </ProtectedRoute>
           }
         />

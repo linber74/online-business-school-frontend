@@ -9,12 +9,18 @@ import type {
   Course,
   EnrollmentStatus,
   MyCourse,
+  NewCourseData,
   RegisterData,
   User,
 } from "../types";
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function nextId(list: { id: number }[]): number {
+  const highest = Math.max(0, ...list.map((item) => item.id));
+  return highest + 1;
 }
 
 export async function getCourses(): Promise<Course[]> {
@@ -57,7 +63,7 @@ export async function register(data: RegisterData): Promise<User> {
   }
 
   const newUser: MockUser = {
-    id: mockUsers.length + 1,
+    id: nextId(mockUsers),
     name: data.name,
     email: data.email,
     roles: ["student"],
@@ -122,4 +128,30 @@ export async function updateEnrollmentStatus(
     throw new Error("Enrollment not found");
   }
   enrollment.status = status;
+}
+
+export async function createCourse(data: NewCourseData): Promise<Course> {
+  await delay(300);
+
+  const codeExists = mockCourses.some(
+    (course) => course.code.toLowerCase() === data.code.toLowerCase(),
+  );
+
+  if (codeExists) {
+    throw new Error("Course code already exists");
+  }
+
+  const newCourse: Course = {
+    id: nextId(mockCourses),
+    code: data.code,
+    title: data.title,
+    description: data.description,
+    duration: data.duration,
+    price: data.price,
+    imageUrl: data.imageUrl,
+  };
+
+  mockCourses.push(newCourse);
+
+  return newCourse;
 }
