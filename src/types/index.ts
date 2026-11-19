@@ -3,7 +3,7 @@ export type Course = {
     title: string;
     description: string;
     imageUrl: string;
-    duration: string;
+    duration: number;
     price: number;
     code: string
 }

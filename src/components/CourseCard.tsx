@@ -1,6 +1,7 @@
 import type { Course } from "../types";
 import { Link } from "react-router-dom";
 import "./CourseCard.css";
+import { DURATION_UNIT } from "../constants";
 
 function CourseCard({ course }: { course: Course }) {
   return (
@@ -15,7 +16,9 @@ function CourseCard({ course }: { course: Course }) {
       <h3>{course.title}</h3>
       <p>{course.code}</p>
       <p>{course.description}</p>
-      <p>Duration: {course.duration}</p>
+      <p>
+        Duration: {course.duration} {DURATION_UNIT}
+      </p>
       <p>Price: {course.price} Euro</p>
       <Link to={`/courses/${course.id}`}>View Course</Link>
     </div>

@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { getMyCourses } from "../api/api";
 import type { MyCourse } from "../types";
 import "./MyCourses.css";
+import { DURATION_UNIT } from "../constants";
 
 function MyCourses() {
   const { user } = useAuth();
@@ -57,7 +58,7 @@ function MyCourses() {
             <h3>{item.course.title}</h3>
             <p>Course code: { item.course.code}</p>
             <p>Status: {item.status}</p>
-            <p>Duration: {item.course.duration}</p>
+            <p>Duration: {item.course.duration} {DURATION_UNIT}</p>
             <Link to={`/courses/${item.course.id}`}>View course</Link>
           </div>
         ))}
