@@ -3,7 +3,7 @@ export type Course = {
     title: string;
     description: string;
     imageUrl: string;
-    duration: string;
+    duration: number;
     price: number;
     code: string
 }
@@ -50,3 +50,12 @@ export type AdminEnrollment = {
     courseTitle: string;
     status: EnrollmentStatus;
 };
+
+export type NewCourseData = {
+    code: string;
+    title: string;
+    description: string;
+    duration: number;
+    price: number;
+    imageUrl: string;
+}

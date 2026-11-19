@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import type { Course } from "../types";
 import { getCourse } from "../api/api";
 import "./CourseDetails.css";
+import { DURATION_UNIT } from "../constants";
 
 function CourseDetails() {
   const { id } = useParams();
@@ -46,7 +47,9 @@ function CourseDetails() {
       <h2>{course.title}</h2>
       <p>Course code: {course.code}</p>
       <p>{course.description}</p>
-      <p>Duration: {course.duration}</p>
+      <p>
+        Duration: {course.duration} {DURATION_UNIT}
+      </p>
       <p>Price: {course.price} Euro</p>
     </main>
   );
