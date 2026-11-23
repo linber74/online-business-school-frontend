@@ -14,6 +14,11 @@
   margin-top: 1rem;
 }
 
+.course-details-notfound {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
 .course-error {
   color: #b91c1c;
 }

@@ -1,35 +1,23 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getMyCourses } from "../api/api";
-import type { MyCourse } from "../types";
 import "./MyCourses.css";
 import { DURATION_UNIT } from "../constants";
+import { useFetch } from "../hooks/useFetch";
 
 function MyCourses() {
   const { user } = useAuth();
-  const [myCourses, setMyCourses] = useState<MyCourse[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    if (user === null) {
-      return;
+  const {
+    data: myCourses,
+    loading,
+    error,
+  } = useFetch(async () => {
+    if (!user) {
+      return [];
+    } else {
+      return getMyCourses(user.id);
     }
-    const userId = user.id;
-
-    async function load() {
-      try {
-        const data = await getMyCourses(userId);
-        setMyCourses(data);
-      } catch {
-        setError("Could not load your courses");
-      } finally {
-        setLoading(false);
-      }
-    }
-    load();
-  }, [user]);
+  }, [user?.id]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -39,7 +27,7 @@ function MyCourses() {
     return <p>{error}</p>;
   }
 
-  if (myCourses.length === 0) {
+  if (!myCourses || myCourses.length === 0) {
     return (
       <main className="my-courses">
         <h2>My Courses</h2>
@@ -56,9 +44,11 @@ function MyCourses() {
         {myCourses.map((item) => (
           <div className="my-courses-card" key={item.enrollmentId}>
             <h3>{item.course.title}</h3>
-            <p>Course code: { item.course.code}</p>
+            <p>Course code: {item.course.code}</p>
             <p>Status: {item.status}</p>
-            <p>Duration: {item.course.duration} {DURATION_UNIT}</p>
+            <p>
+              Duration: {item.course.duration} {DURATION_UNIT}
+            </p>
             <Link to={`/courses/${item.course.id}`}>View course</Link>
           </div>
         ))}
