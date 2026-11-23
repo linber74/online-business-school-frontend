@@ -1,40 +1,23 @@
-import { useState, useEffect } from "react";
 import { getCourses } from "../api/api";
-import type { Course } from "../types";
 import CourseCard from "../components/CourseCard";
 import "./Courses.css";
+import { useFetch } from "../hooks/useFetch";
 
 function Courses() {
-  const [courses, setCourses] = useState<Course[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    async function load() {
-      try {
-        const data = await getCourses();
-        setCourses(data);
-      } catch {
-        setError("Could not load courses");
-      } finally {
-        setLoading(false);
-      }
-    }
-    load();
-  }, []);
+  const { data: courses, loading, error } = useFetch(getCourses, []);
 
   return (
     <main className="courses">
       <h2>Courses</h2>
-      {loading && <p> Loading...</p>}
+      {loading && <p>Loading...</p>}
       {error && <p className="courses-error">{error}</p>}
-      {!loading &&
-        !error && (
+      {!loading && !error && courses && (
         <div className="courses-list">
-          {courses.map(course =>
-            <CourseCard key={course.id} course={course} />)}
-          </div>
-        )}
+          {courses.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
+      )}
     </main>
   );
 }

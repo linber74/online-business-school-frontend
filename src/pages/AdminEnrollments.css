@@ -4,6 +4,10 @@
   padding: 2rem 1rem;
 }
 
+.admin-enrollments-error{
+  color: #b91c1c;
+}
+
 .admin-enrollments-card {
   border: 1px solid #ddd;
   border-radius: 8px;

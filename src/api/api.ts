@@ -14,6 +14,8 @@ import type {
   User,
 } from "../types";
 
+const FETCH_DELAY = 0;
+
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -24,12 +26,12 @@ function nextId(list: { id: number }[]): number {
 }
 
 export async function getCourses(): Promise<Course[]> {
-  await delay(300);
+  await delay(FETCH_DELAY);
   return mockCourses;
 }
 
 export async function getCourse(id: number): Promise<Course | undefined> {
-  await delay(300);
+  await delay(FETCH_DELAY);
   return mockCourses.find((course) => course.id === id);
 }
 
@@ -80,7 +82,7 @@ export async function register(data: RegisterData): Promise<User> {
 }
 
 export async function getMyCourses(userId: number): Promise<MyCourse[]> {
-  await delay(300);
+  await delay(FETCH_DELAY);
 
   const enrollments = mockEnrollments.filter((e) => e.userId === userId);
 
@@ -98,7 +100,7 @@ export async function getMyCourses(userId: number): Promise<MyCourse[]> {
 }
 
 export async function getEnrollments(): Promise<AdminEnrollment[]> {
-  await delay(300);
+  await delay(FETCH_DELAY);
 
   return mockEnrollments
     .map((enrollment) => {
@@ -121,7 +123,7 @@ export async function updateEnrollmentStatus(
   enrollmentId: number,
   status: EnrollmentStatus,
 ): Promise<void> {
-  await delay(300);
+  await delay(FETCH_DELAY);
 
   const enrollment = mockEnrollments.find((item) => item.id === enrollmentId);
   if (!enrollment) {

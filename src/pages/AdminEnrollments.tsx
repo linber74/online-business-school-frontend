@@ -1,38 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getEnrollments, updateEnrollmentStatus } from "../api/api";
-import type { AdminEnrollment, EnrollmentStatus } from "../types";
+import type { EnrollmentStatus } from "../types";
 import "./AdminEnrollments.css";
+import { useFetch } from "../hooks/useFetch";
 
 function AdminEnrollments() {
-  const [enrollments, setEnrollments] = useState<AdminEnrollment[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [updateError, setUpdateError] = useState("");
+  const {
+    data: enrollments,
+    loading,
+    error,
+    reload,
+  } = useFetch(getEnrollments, []);
 
-  async function loadEnrollments() {
+  async function handleStatusChange(
+    enrollmentId: number,
+    status: EnrollmentStatus,
+  ) {
     try {
-      const data = await getEnrollments();
-      setEnrollments(data);
+      await updateEnrollmentStatus(enrollmentId, status);
+      reload();
     } catch {
-      setError("Could not load enrollments");
-    } finally {
-      setLoading(false);
+      setUpdateError("Could not update enrollment");
     }
   }
 
-  useEffect(() => {
-    loadEnrollments();
-  }, []);
-
-  async function handleStatusChange(id: number, status: EnrollmentStatus) {
-    try {
-      await updateEnrollmentStatus(id, status);
-      await loadEnrollments();
-    } catch {
-      setError("Could not update enrollment");
-    }
-  }
-
-  if (loading) {
+  if (loading && !enrollments) {
     return <p>Loading...</p>;
   }
 
@@ -40,13 +33,14 @@ function AdminEnrollments() {
     return <p>{error}</p>;
   }
 
-  if (enrollments.length === 0) {
+  if (!enrollments || enrollments.length === 0) {
     return <p>No enrollments</p>;
   }
 
   return (
     <main className="admin-enrollments">
       <h2>Enrollments</h2>
+      {updateError && <p className="admin-enrollments-error">{updateError}</p>}
       {enrollments.map((item) => (
         <div className="admin-enrollments-card" key={item.enrollmentId}>
           <p>

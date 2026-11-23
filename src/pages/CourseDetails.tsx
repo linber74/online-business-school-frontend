@@ -1,29 +1,16 @@
-import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import type { Course } from "../types";
 import { getCourse } from "../api/api";
 import "./CourseDetails.css";
 import { DURATION_UNIT } from "../constants";
+import { useFetch } from "../hooks/useFetch";
 
 function CourseDetails() {
   const { id } = useParams();
-  const [course, setCourse] = useState<Course | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    async function load() {
-      try {
-        const data = await getCourse(Number(id));
-        setCourse(data ?? null);
-      } catch {
-        setError("Could not load course");
-      } finally {
-        setLoading(false);
-      }
-    }
-    load();
-  }, [id]);
+  const {
+    data: course,
+    loading,
+    error,
+  } = useFetch(() => getCourse(Number(id)), [id]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -32,14 +19,19 @@ function CourseDetails() {
     return <p className="course-error">{error}</p>;
   }
   if (!course) {
-    return <p>Course not found</p>;
+    return (
+      <main className="course-details-notfound">
+        <h3>Course not found</h3>
+        <Link to="/courses">Back to courses</Link>
+      </main>
+    );
   }
   return (
     <main className="course-details">
       <Link to="/courses">← Back to courses</Link>
       {course.imageUrl && (
         <img
-          className="course-card-image"
+          className="course-details-image"
           src={course.imageUrl}
           alt={course.title}
         />
