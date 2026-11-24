@@ -12,7 +12,7 @@ body {
 
 :root {
   --color-primary: #2563eb; /*buttons, links*/
-  --color-header-bg: lightblue; /*header*/
+  --color-header-bg: #b8d6e4; /*header*/
   --color-error: #b91c1c; /*error message*/
   --color-border: #ccc; /*field, card*/
   --color-text: #000; /*text color*/
@@ -29,4 +29,14 @@ body {
   color: white;
   font-size: 1rem;
   cursor: pointer;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
 }
