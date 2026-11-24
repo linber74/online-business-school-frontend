@@ -1,7 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { getCourse } from "../api/api";
 import "./CourseDetails.css";
-import { DURATION_UNIT } from "../constants";
 import { useFetch } from "../hooks/useFetch";
 
 function CourseDetails() {
@@ -40,7 +39,7 @@ function CourseDetails() {
       <p>Course code: {course.code}</p>
       <p>{course.description}</p>
       <p>
-        Duration: {course.duration} {DURATION_UNIT}
+        Duration: {course.duration} {course.durationUnit}
       </p>
       <p>Price: {course.price} Euro</p>
     </main>

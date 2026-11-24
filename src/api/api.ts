@@ -149,6 +149,7 @@ export async function createCourse(data: NewCourseData): Promise<Course> {
     title: data.title,
     description: data.description,
     duration: data.duration,
+    durationUnit: data.durationUnit,
     price: data.price,
     imageUrl: data.imageUrl,
   };

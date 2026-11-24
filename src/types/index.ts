@@ -1,9 +1,12 @@
+export type DurationUnit = "hours" | "weeks";
+
 export type Course = {
     id: number;
     title: string;
     description: string;
     imageUrl: string;
     duration: number;
+    durationUnit: DurationUnit;
     price: number;
     code: string
 }
@@ -56,6 +59,7 @@ export type NewCourseData = {
     title: string;
     description: string;
     duration: number;
+    durationUnit: DurationUnit;
     price: number;
     imageUrl: string;
 }
