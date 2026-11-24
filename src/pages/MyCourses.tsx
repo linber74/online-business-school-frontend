@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getMyCourses } from "../api/api";
 import "./MyCourses.css";
-import { DURATION_UNIT } from "../constants";
 import { useFetch } from "../hooks/useFetch";
 
 function MyCourses() {
@@ -47,7 +46,7 @@ function MyCourses() {
             <p>Course code: {item.course.code}</p>
             <p>Status: {item.status}</p>
             <p>
-              Duration: {item.course.duration} {DURATION_UNIT}
+              Duration: {item.course.duration} {item.course.durationUnit}
             </p>
             <Link to={`/courses/${item.course.id}`}>View course</Link>
           </div>

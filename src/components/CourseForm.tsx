@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { DURATION_UNIT } from "../constants";
 import "./CourseForm.css";
-import type { NewCourseData } from "../types";
+import { type DurationUnit, type NewCourseData } from "../types";
 import { validateCourse } from "../utils/validateCourse";
 
 function CourseForm({ onSubmit }: { onSubmit: (data: NewCourseData) => void }) {
@@ -9,6 +8,7 @@ function CourseForm({ onSubmit }: { onSubmit: (data: NewCourseData) => void }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState("");
+  const [durationUnit, setDurationUnit] = useState<DurationUnit>("hours");
   const [price, setPrice] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -25,6 +25,7 @@ function CourseForm({ onSubmit }: { onSubmit: (data: NewCourseData) => void }) {
       title,
       description,
       duration: Number(duration),
+      durationUnit,
       price: Number(price),
       imageUrl,
     };
@@ -84,16 +85,28 @@ function CourseForm({ onSubmit }: { onSubmit: (data: NewCourseData) => void }) {
         )}
       </div>
       <div className="course-form-field">
-        <label htmlFor="duration">Duration ({DURATION_UNIT})</label>
-        <input
-          id="duration"
-          type="number"
-          value={duration}
-          onChange={(e) => {
-            setDuration(e.target.value);
-            clearError("duration");
-          }}
-        />
+        <label htmlFor="duration">Duration</label>
+        <div className="course-form-row">
+          <input
+            id="duration"
+            type="number"
+            value={duration}
+            onChange={(e) => {
+              setDuration(e.target.value);
+              clearError("duration");
+            }}
+          />
+          <select
+            value={durationUnit}
+            onChange={(e) => {
+              setDurationUnit(e.target.value as DurationUnit);
+            }}
+            aria-label="Duration unit"
+          >
+            <option value="hours">Hours</option>
+            <option value="weeks">Weeks</option>
+          </select>
+        </div>
         {errors.duration && (
           <p className="course-form-error">{errors.duration}</p>
         )}
