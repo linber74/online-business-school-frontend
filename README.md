@@ -67,7 +67,6 @@ src/
   pages/        Pages (Home, Courses, Login, Register, Dashboard ...)
   types/        Shared TypeScript types
   utils/        Helper functions (validateRegister, validateCourse, getHomePath)
-  constants.ts  Shared constants (DURATION_UNIT)
 ```
 
 ## Workflow
