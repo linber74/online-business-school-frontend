@@ -1,1 +1,0 @@
-export const DURATION_UNIT = "hours"
