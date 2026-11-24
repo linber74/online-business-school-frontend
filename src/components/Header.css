@@ -1,6 +1,6 @@
 /* Header.css */
 .header {
-  background: lightblue;
+  background: var(--color-header-bg);
   padding: 1rem;
 }
 

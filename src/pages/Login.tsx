@@ -33,7 +33,7 @@ function Login() {
   return (
     <main className="login">
       <h2>Log in</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit} noValidate>
         <div className="login-field">
           <label htmlFor="email">Email</label>
           <input
@@ -53,7 +53,7 @@ function Login() {
           />
         </div>
         {error && <p className="login-error">{error}</p>}
-        <button type="submit">Log in</button>
+        <button className="btn" type="submit">Log in</button>
       </form>
       <p>
         No account? <Link to="/register">Register</Link>

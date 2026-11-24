@@ -5,12 +5,12 @@
 }
 
 .admin-enrollments-error{
-  color: #b91c1c;
+  color: var(--color-error);
 }
 
 .admin-enrollments-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
   padding: 1rem;
   margin-top: 1rem;
 }
@@ -22,11 +22,11 @@
 }
 
 .admin-enrollments-confirm {
-  background: #16a34a;
+  background: var(--color-success);
   color: white;
   border: none;
   padding: 0.4rem 0.9rem;
-  border-radius: 6px;
+  border-radius: var(--radius);
   font: inherit;
   cursor: pointer;
 }
@@ -40,13 +40,13 @@
   color: white;
   border: none;
   padding: 0.4rem 0.9rem;
-  border-radius: 6px;
+  border-radius: var(--radius);
   font: inherit;
   cursor: pointer;
 }
 
 .admin-enrollments-reject:hover {
-  background: #b91c1c;
+  background: var(--color-error);
 }
 
 .admin-enrollments-status{
