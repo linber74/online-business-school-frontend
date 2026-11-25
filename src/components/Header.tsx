@@ -5,8 +5,6 @@ import { useAuth } from "../context/AuthContext";
 const LINKS = [
   { label: "Home", href: "/" },
   { label: "Courses", href: "/courses" },
-  //{ label: "Lectures", href: "#" },
-  { label: "Student info", href: "/student-info" },
 ];
 
 function Header() {
@@ -20,6 +18,7 @@ function Header() {
     logout();
     navigate("/");
   }
+
   return (
     <header className="header">
       <div className="header-content">
@@ -46,6 +45,11 @@ function Header() {
                 {user.roles.includes("teacher") && (
                   <li>
                     <Link to="/teacher">Teacher</Link>
+                  </li>
+                )}
+                {!isStaff && (
+                  <li>
+                    <Link to="/student-info">Student info</Link>
                   </li>
                 )}
                 <li>
