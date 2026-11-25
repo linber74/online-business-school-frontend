@@ -14,76 +14,80 @@ import TeacherDashboard from "./pages/TeacherDashboard";
 import NotFound from "./pages/NotFound";
 import AdminEnrollments from "./pages/AdminEnrollments";
 import AdminNewCourse from "./pages/AdminNewCourse";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
+    <div className="app-layout">
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/courses/:id" element={<CourseDetails />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute role="admin">
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/enrollments"
-          element={
-            <ProtectedRoute role="admin">
-              <AdminEnrollments />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/teacher"
-          element={
-            <ProtectedRoute role="teacher">
-              <TeacherDashboard />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/student-info"
-          element={
-            <ProtectedRoute>
-              <StudentInfo />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/my-courses"
-          element={
-            <ProtectedRoute>
-              <MyCourses />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/courses/new"
-          element={
-            <ProtectedRoute role="admin">
-              <AdminNewCourse />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </>
+      <div className="app-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:id" element={<CourseDetails />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute role="admin">
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/enrollments"
+            element={
+              <ProtectedRoute role="admin">
+                <AdminEnrollments />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/teacher"
+            element={
+              <ProtectedRoute role="teacher">
+                <TeacherDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/student-info"
+            element={
+              <ProtectedRoute>
+                <StudentInfo />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/my-courses"
+            element={
+              <ProtectedRoute>
+                <MyCourses />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/courses/new"
+            element={
+              <ProtectedRoute role="admin">
+                <AdminNewCourse />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+      <Footer />
+    </div>
   );
 }
 

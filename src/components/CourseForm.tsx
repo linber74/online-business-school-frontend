@@ -139,7 +139,7 @@ function CourseForm({ onSubmit }: { onSubmit: (data: NewCourseData) => void }) {
           <p className="course-form-error">{errors.imageUrl}</p>
         )}
       </div>
-      <button type="submit">Create Course</button>
+      <button className="btn" type="submit">Create Course</button>
     </form>
   );
 }

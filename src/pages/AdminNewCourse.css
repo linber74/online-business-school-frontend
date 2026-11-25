@@ -1,9 +1,9 @@
-.admin-new-course{
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+.admin-new-course {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
-.admin-new-course-error{
-    color:#b91c1c;
+.admin-new-course-error {
+  color: var(--color-error);
 }

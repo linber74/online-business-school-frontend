@@ -1,0 +1,6 @@
+.footer{
+    background: var(--color-header-bg);
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+}

@@ -10,6 +10,10 @@
   gap: 1rem;
 }
 
+.courses-error{
+  color: var(--color-error);
+}
+
 @media (min-width: 768px) {
   .courses-list {
     grid-template-columns: repeat(3, 1fr);

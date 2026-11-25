@@ -5,6 +5,38 @@
 }
 
 body {
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-family);
+  color: var(--color-text);
   line-height: 1.5;
+}
+
+:root {
+  --color-primary: #2563eb; /*buttons, links*/
+  --color-header-bg: #b8d6e4; /*header*/
+  --color-error: #b91c1c; /*error message*/
+  --color-border: #ccc; /*field, card*/
+  --color-text: #000; /*text color*/
+  --radius: 6px;
+  --font-family: system-ui, sans-serif; /*font*/
+  --color-success: #16a34a;
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-content {
+  flex: 1;
 }
