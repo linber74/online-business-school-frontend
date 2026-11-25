@@ -19,7 +19,7 @@ function CourseCard({ course }: { course: Course }) {
         Duration: {course.duration} {course.durationUnit}
       </p>
       <p>Price: {course.price} Euro</p>
-      <Link to={`/courses/${course.id}`}>View Course</Link>
+      <Link className="btn" to={`/courses/${course.id}`}>View Course</Link>
     </div>
   );
 }

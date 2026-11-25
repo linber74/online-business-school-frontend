@@ -3,6 +3,15 @@
   border-radius: var(--radius);
   padding: 1rem;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card .btn{
+   margin-top: auto;
+  align-self: flex-start;
+  padding: 0.5rem 0.9rem; 
+  font-size: 0.95rem;
 }
 
 .course-card-image {
